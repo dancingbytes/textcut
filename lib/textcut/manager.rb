@@ -12,6 +12,9 @@ module Textcut
           context.class_eval <<-"end_eval", __FILE__, __LINE__
 
             def #{options[:get]}_cut
+
+              puts "self.builder [3]"
+
               Textcut::Cutter.new(
                 self.#{options[:get]},
                   "#{options[:default_cut_title]}"

@@ -5,9 +5,11 @@ module Textcut
 
   class Cutter
 
+    TEMP_TAG = "textcut_temp_tag"
+
     def initialize(content, default_cut_title)
 
-      @doc = Nokogiri::HTML::DocumentFragment.parse(content)
+      @doc = Nokogiri::HTML::DocumentFragment.parse("<#{TEMP_TAG}>#{content}</#{TEMP_TAG}>")
       @default_cut_title = default_cut_title
 
     end # new
@@ -24,7 +26,7 @@ module Textcut
         replace(url)
 
       end
-      @doc.to_html
+      @doc.search(".//#{TEMP_TAG}").inner_html
 
     end # cut
 

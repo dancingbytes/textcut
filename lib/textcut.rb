@@ -9,7 +9,7 @@ module Textcut
 end # Textcut
 
 if defined?(Mongoid::Document)
-  Mongoid::Document::ClassMethods.send(:include, Textcut::Base)
+  Mongoid::Document::ClassMethods.send(:include, Textcut::Base::SingletonMethods)
 end
 
 if defined?(ActiveRecord::Base)
