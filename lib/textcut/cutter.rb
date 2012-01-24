@@ -9,7 +9,7 @@ module Textcut
 
     def initialize(content, default_cut_title)
 
-      @doc = Nokogiri::HTML::DocumentFragment.parse("<#{TEMP_TAG}>#{content}</#{TEMP_TAG}>")
+      @doc = ::Nokogiri::HTML::DocumentFragment.parse("<#{TEMP_TAG}>#{content}</#{TEMP_TAG}>")
       @default_cut_title = default_cut_title
 
     end # new
@@ -35,7 +35,7 @@ module Textcut
     def replace(url)
 
       replaced_by = url.blank? ? "" : "<a href=\"#{url}\">#{cut_title}</a>"
-      @tag.replace( Nokogiri::HTML::fragment(replaced_by) )
+      @tag.replace( ::Nokogiri::HTML::fragment(replaced_by) )
       
     end  # replace
 
