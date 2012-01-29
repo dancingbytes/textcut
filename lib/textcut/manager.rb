@@ -13,7 +13,7 @@ module Textcut
 
             def #{options[:get]}_cut
 
-              Textcut::Cutter.new(
+              ::Textcut::Cutter.new(
                 self.#{options[:get]},
                   "#{options[:default_cut_title]}"
                 ).cut("#{options[:xpath]}", #{options[:url_method]})
@@ -30,7 +30,7 @@ module Textcut
           context.class_eval <<-"end_eval", __FILE__, __LINE__
 
             def textcut
-              @textcut ||= Textcut::Manager.new(self, #{options})
+              @textcut ||= ::Textcut::Manager.new(self, #{options})
             end # textcut
 
             before_save ->() { textcut.cut }
@@ -63,7 +63,7 @@ module Textcut
 
       @obj.send("#{@config[:set]}=".to_sym,
 
-        Textcut::Cutter.new(
+        ::Textcut::Cutter.new(
           @obj.send(@config[:get].to_sym),
           @config[:default_cut_title]
         ).cut(xpath, cut_url)

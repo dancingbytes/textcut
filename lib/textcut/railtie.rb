@@ -1,22 +1,19 @@
 # encoding: utf-8
-require 'textcut'
 require 'rails/railtie'
 
 module Textcut
 
   class Railtie < ::Rails::Railtie
     
-    config.before_initialize do
+    initializer 'textcut' do |app|
+    
+    	if defined?(Mongoid::Document)
+  			Mongoid::Document::ClassMethods.send(:include, ::Textcut::Base::SingletonMethods)
+			elsif defined?(ActiveRecord::Base)
+  			ActiveRecord::Base.send(:include, ::Textcut::Base)
+			end  
 
-      ActiveSupport.on_load :active_record do
-        ActiveRecord::Base.send :include, Textcut::Base
-      end
-
-    end # before_initialize
-
-    def self.extend_active_record
-      ActiveRecord::Base.send :include, Textcut::Base
-    end # extend_active_record
+    end # initializer
 
   end # Railtie
   

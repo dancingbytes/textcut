@@ -1,17 +1,9 @@
 # encoding: utf-8
-module Textcut
+require 'textcut/version'
+require 'textcut/manager'
 
-  autoload :Manager,  'textcut/manager'
-  autoload :Cutter,   'textcut/cutter'
-  autoload :TagList,  'textcut/tag_list'
-  autoload :Base,     'textcut/base'
+require 'nokogiri'
+require 'textcut/cutter'
 
-end # Textcut
-
-if defined?(Mongoid::Document)
-  Mongoid::Document::ClassMethods.send(:include, Textcut::Base::SingletonMethods)
-end
-
-if defined?(ActiveRecord::Base)
-  require 'textcut/railtie'
-end  
+require 'textcut/base'
+require 'textcut/railtie'

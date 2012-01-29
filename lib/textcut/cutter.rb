@@ -1,6 +1,4 @@
 # encoding: utf-8
-require 'nokogiri'
-
 module Textcut
 
   class Cutter

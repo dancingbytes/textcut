@@ -14,7 +14,7 @@ module Textcut
         options[:xpath] ||= ".//span[@class='textcut']"
         options[:default_cut_title] ||= "more"
 
-        Textcut::Manager.builder(self, options)
+        ::Textcut::Manager.builder(self, options)
 
       end # textcut
 
