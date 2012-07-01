@@ -15,10 +15,10 @@ Gem::Specification.new do |s|
 
   s.files = `git ls-files`.split("\n")
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.extra_rdoc_files = ['README']
   s.require_paths = ['lib']
+  s.has_rdoc = false
 
-  s.licenses = ['MIT']
+  s.licenses = ['BSD']
 
   s.add_dependency 'railties', ['>= 3.0.0']
   s.add_dependency 'nokogiri', ['>= 1.5']
